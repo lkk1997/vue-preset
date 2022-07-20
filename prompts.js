@@ -1,27 +1,3 @@
-const pcUI2 = [
-    {
-      name: 'Element UI',
-      value: 'element-ui'
-    },
-    {
-      name: 'ant-design-vue',
-      value: 'ant'
-    },
-    {
-      name: 'none',
-      value: 'none'
-    }
-  ];
-  
-
-const pcUI3 = [
-    ...pcUI2,
-    {
-      name: 'view-design',
-      value: 'view'
-    },
-  ];
-
 module.exports = [
     // {
     //     name: 'package-manager',
@@ -91,7 +67,24 @@ module.exports = [
         name: 'ui-framework',
         type: 'list',
         message: 'Choice UI Framework(default:none)',
-        choices: (answers) => (answers.preset === 'v2'? pcUI2:pcUI3),
+        choices: [
+            {
+                name: 'Element UI',
+                value: 'element-ui'
+              },
+              {
+                name: 'ant-design-vue',
+                value: 'ant'
+              },
+              {
+                name: 'none',
+                value: 'none'
+              },
+              {
+                name: 'view-design',
+                value: 'view'
+              }
+        ],
         default: 'none'
     }
 ]

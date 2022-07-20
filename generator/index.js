@@ -34,7 +34,7 @@ module.exports = (api, options, rootOptions) => {
                 'less-loader': '^10.2.0'
             }
         })
-    }else if(options['css-preprocessor'] === 'sass'){
+    }else if(options['css-preprocessor'] === 'scss'){
         api.extendPackage({
             dependencies:{
                 'node-sass': '^7.0.1',
@@ -48,9 +48,6 @@ module.exports = (api, options, rootOptions) => {
 
     if (options.language === 'ts') {
         api.extendPackage({
-          dependencies: {
-            'register-service-worker': '1.7.2'
-          },
           devDependencies: {
             '@types/node': '^10.14.17',
             '@types/webpack-env': '^1.14.0',
@@ -62,7 +59,15 @@ module.exports = (api, options, rootOptions) => {
             typescript: '4.3.5'
           }
         });
-      }
+    }else{
+        api.extendPackage({
+            devDependencies: {
+              '@types/node': '^10.14.17',
+              '@types/webpack-env': '^1.14.0',
+              '@vue/cli-plugin-pwa': '~4.5.0'
+            }
+          });
+    }
 
     if(options.preset === 'v2'){
         api.extendPackage({
