@@ -1,7 +1,6 @@
 module.exports = (api, options, rootOptions) => {
      // 命令
     api.extendPackage({
-        buildVersion: 'V202101-00-000',
         scripts: {
             build: 'node build/index.js',
             serve: 'vue-cli-service serve',
@@ -37,8 +36,12 @@ module.exports = (api, options, rootOptions) => {
         })
     }else if(options['css-preprocessor'] === 'sass'){
         api.extendPackage({
-            devDependencies:{
-                'sass-loader': '^7.3.1'
+            dependencies:{
+                'node-sass': '^7.0.1',
+            },
+            devDependencies: {
+                "sass-loader": "^13.0.2",
+                "style-loader": "^3.3.1"
             }
         })
     }
@@ -63,14 +66,14 @@ module.exports = (api, options, rootOptions) => {
 
     if(options.preset === 'v2'){
         api.extendPackage({
-            devDependencies:{
-                vue: '^3.2.31'
+            dependencies:{
+                vue: '^2.6.14'
             }
         })
     }else{
         api.extendPackage({
-            devDependencies:{
-                vue:'^2.6.14'
+            dependencies:{
+                vue:'^3.2.31'
             }
         })
     }

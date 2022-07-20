@@ -14,8 +14,8 @@ const pcUI2 = [
   ];
   
 
-  const pcUI3 = [
-    ...pcUI,
+const pcUI3 = [
+    ...pcUI2,
     {
       name: 'view-design',
       value: 'view'
@@ -45,17 +45,13 @@ module.exports = [
         message: 'Choose CSS Preprocessor(default:scss)',
         choices: [
             {
-                name: Scss,
-                value: scss
+                name: 'Scss',
+                value: 'scss'
             },
             {
-                name: Less,
-                value: less
-            },
-            {
-                name: Stylus,
-                value: stylus
-            },
+                name: 'Less',
+                value: 'less'
+            }
         ],
         default: 'sass'
     },

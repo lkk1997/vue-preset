@@ -12,10 +12,7 @@
     },
     "keywords": [
       "vue",
-      "cli",
-      "custom",
-      "template",
-      "plugin"
+      "cli"
     ]
   }
   
