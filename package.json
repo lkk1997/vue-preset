@@ -1,0 +1,21 @@
+{
+    "name": "vue-cli-plugin-lkk",
+    "version": "0.1.0",
+    "description": "lkk templates for Vue CLI 3",
+    "main": "index.js",
+    "scripts": {
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/lkk1997/vue-preset.git"
+      
+    },
+    "keywords": [
+      "vue",
+      "cli",
+      "custom",
+      "template",
+      "plugin"
+    ]
+  }
+  

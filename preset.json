@@ -1,0 +1,8 @@
+{
+    "useConfigFiles": true,
+    "vuex": true,
+    "plugins": {
+      "@vue/cli-plugin-eslint": {}
+    }
+  }
+  
