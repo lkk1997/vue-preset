@@ -1,8 +1,8 @@
 {
-    "useConfigFiles": true,
-    "vuex": true,
-    "plugins": {
-      "@vue/cli-plugin-eslint": {}
+    "useConfigFiles":true,
+    "useTaobaoRegistry":true,
+    "vuex":true,
+    "plugins":{
+        "@vue/cli-plugin-eslint":{}
     }
-  }
-  
+}

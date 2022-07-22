@@ -17,15 +17,16 @@ module.exports = (api, options, rootOptions) => {
             'vue-cli-plugin-axios': '0.0.4',
             'vuex': '^3.4.0',
             'lrz': '^4.9.41',
+            "axios": "^0.18.0",
         }
     })
 
     // if(options['package-manager'] === 'yarn'){
-    //     api.extendPackage({})
+    //     console.log('@@@@@api:',api)
+    //     console.log('@@@@@options',options)
     // }else{
-    //     api.extendPackage({})
+        
     // }
-
 
     if(options['css-preprocessor'] === 'less'){
         api.extendPackage({
@@ -90,4 +91,7 @@ module.exports = (api, options, rootOptions) => {
       } else if (options['ui-framework'] === 'view') {
         require('./view.js')(api, options);
       }
+    api.render('../axios');
+    api.render('../store')
+    api.onCreateComplete(() => {});
 }
