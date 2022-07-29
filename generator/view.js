@@ -17,7 +17,6 @@ module.exports = (api, options, rootOptions) => {
     } else {
       api.render('../ui/view-design-v3');
     }
-    api.injectImports('src/plugins/index.js', `import './view.js'`);
     api.onCreateComplete(() => {});
   };
   

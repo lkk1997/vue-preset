@@ -15,18 +15,11 @@ module.exports = (api, options, rootOptions) => {
         dependencies:{
             'vue-cli-plugin-dll':'~1.1.12',
             'vue-cli-plugin-axios': '0.0.4',
-            'vuex': '^3.4.0',
             'lrz': '^4.9.41',
             "axios": "^0.18.0",
         }
     })
 
-    // if(options['package-manager'] === 'yarn'){
-    //     console.log('@@@@@api:',api)
-    //     console.log('@@@@@options',options)
-    // }else{
-        
-    // }
 
     if(options['css-preprocessor'] === 'less'){
         api.extendPackage({
@@ -50,39 +43,37 @@ module.exports = (api, options, rootOptions) => {
     if (options.language === 'ts') {
         api.extendPackage({
           devDependencies: {
-            '@types/node': '^10.14.17',
-            '@types/webpack-env': '^1.14.0',
             '@typescript-eslint/eslint-plugin': '^4.28.0',
             '@typescript-eslint/parser': '^4.28.0',
-            '@vue/cli-plugin-pwa': '~4.5.0',
+            // '@vue/cli-plugin-pwa': '~4.5.0',
             '@vue/cli-plugin-typescript': '~4.5.0',
             '@vue/eslint-config-typescript': '^5.0.2',
             typescript: '4.3.5'
           }
         });
-    }else{
-        api.extendPackage({
-            devDependencies: {
-              '@types/node': '^10.14.17',
-              '@types/webpack-env': '^1.14.0',
-              '@vue/cli-plugin-pwa': '~4.5.0'
-            }
-          });
     }
 
     if(options.preset === 'v2'){
         api.extendPackage({
             dependencies:{
-                vue: '^2.6.14'
+                vue: '^2.6.14',
+                'vuex': '^3.4.0',
             }
         })
-    }else{
+    }else if(options.preset === 'v3'){
         api.extendPackage({
             dependencies:{
-                vue:'^3.2.31'
+                vue:'^3.2.31',
+                "vuex": "^4.0.0"
             }
         })
     }
+
+    api.render((files) => {
+        Object.keys(files)
+          .filter((path) => path.startsWith('src/') || path.startsWith('plugins/'))
+          .forEach((path) => delete files[path]);
+    });
 
     if (options['ui-framework'] === 'element-ui') {
         require('./element.js')(api, options);
@@ -91,7 +82,39 @@ module.exports = (api, options, rootOptions) => {
       } else if (options['ui-framework'] === 'view') {
         require('./view.js')(api, options);
       }
-    api.render('../axios');
-    api.render('../store')
+    if(options.preset === 'v2'){
+        if(options.language === 'js'){
+            api.render('./template-vue2-js')
+            if(options['css-preprocessor'] === 'scss'){
+                api.render('./sass-v2-js')
+            }else{
+                api.render('./less-v2-js')
+            }
+        }else{
+            api.render('./template-vue2-ts')
+            if(options['css-preprocessor'] === 'scss'){
+                api.render('./sass-v2-ts')
+            }else{
+                api.render('./less-v2-ts')
+            }
+        }
+    }else{
+        if(options.language === 'js'){
+            api.render('./template-vue3-js')
+            if(options['css-preprocessor'] === 'scss'){
+                api.render('./sass-v3-js')
+            }else{
+                api.render('./less-v3-js')
+            }
+        }else{
+            api.render('./template-vue3-ts')
+            if(options['css-preprocessor'] === 'scss'){
+                api.render('./sass-v3-ts')
+            }else{
+                api.render('./less-v3-ts')
+            }
+        }
+    }
+
     api.onCreateComplete(() => {});
 }
