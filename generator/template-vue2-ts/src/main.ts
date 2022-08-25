@@ -2,7 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import './services/request'
 import store from './store'
-
 <%_ if (options['ui-framework'] === 'element-ui') { _%>
 import './services/element';
 <%_ } else if (options['ui-framework'] === 'ant') { _%>

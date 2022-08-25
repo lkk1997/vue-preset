@@ -4,7 +4,6 @@ import getters from './getters'
 
 Vue.use(Vuex)
 
-
 const modulesFiles = require.context('./modules', true, /\.ts$/)
 const modules = modulesFiles.keys().reduce((modules:any, modulePath:any) => {
   const moduleName:any = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')

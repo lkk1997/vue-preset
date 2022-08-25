@@ -2,9 +2,10 @@ module.exports = (api, options, rootOptions) => {
      // 命令
     api.extendPackage({
         scripts: {
-            build: 'node build/index.js',
+            build: "vue-cli-service build",
             serve: 'vue-cli-service serve',
             lint: 'vue-cli-service lint',
+            dll: 'webpack --config webpack.dll.conf.js'
         },
         'scripts-info': {
             serve: '运行开发服务器',
@@ -19,7 +20,19 @@ module.exports = (api, options, rootOptions) => {
             "axios": "^0.18.0",
         }
     })
-
+    api.extendPackage({
+        devDependencies: {
+            "clean-webpack-plugin": "^4.0.0",
+            "webpack-cli": "^4.10.0",
+            "eslint": "^7.32.0",
+            "@vue/cli-plugin-eslint": "~5.0.0",
+            "@vue/eslint-config-standard": "^6.1.0",
+            "eslint-plugin-import": "^2.25.3",
+            "eslint-plugin-node": "^11.1.0",
+            "eslint-plugin-promise": "^5.1.0",
+            "eslint-plugin-vue": "^8.0.3"
+        }
+    })
 
     if(options['css-preprocessor'] === 'less'){
         api.extendPackage({
@@ -45,7 +58,6 @@ module.exports = (api, options, rootOptions) => {
           devDependencies: {
             '@typescript-eslint/eslint-plugin': '^4.28.0',
             '@typescript-eslint/parser': '^4.28.0',
-            // '@vue/cli-plugin-pwa': '~4.5.0',
             '@vue/cli-plugin-typescript': '~4.5.0',
             '@vue/eslint-config-typescript': '^5.0.2',
             typescript: '4.3.5'
@@ -68,7 +80,7 @@ module.exports = (api, options, rootOptions) => {
             }
         })
     }
-
+    api.render('./template-dll')
     api.render((files) => {
         Object.keys(files)
           .filter((path) => path.startsWith('src/') || path.startsWith('plugins/'))

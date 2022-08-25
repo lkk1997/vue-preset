@@ -10,5 +10,4 @@ import './services/ant';
 <%_ } else if (options['ui-framework'] === 'view') { _%>
 import './services/view';
 <%_ } _%>
-
 createApp(App).use(store).mount('#app')
